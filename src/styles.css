@@ -1,0 +1,104 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ivory: var(--ivory);
+  --color-navy: var(--navy);
+  --color-maroon: var(--maroon);
+  --color-slate: var(--slate);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Diplomatic palette */
+  --ivory: #F8F6F1;
+  --navy: #0B2D45;
+  --maroon: #7A1024;
+  --slate: #5F6B73;
+
+  --background: #FFFFFF;
+  --foreground: #0B2D45;
+  --card: #FFFFFF;
+  --card-foreground: #0B2D45;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B2D45;
+  --primary: #0B2D45;
+  --primary-foreground: #F8F6F1;
+  --secondary: #F8F6F1;
+  --secondary-foreground: #0B2D45;
+  --muted: #F1EEE7;
+  --muted-foreground: #5F6B73;
+  --accent: #7A1024;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B91C1C;
+  --destructive-foreground: #FFFFFF;
+  --border: #E7E2D6;
+  --input: #E7E2D6;
+  --ring: #0B2D45;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: local('Inter');
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+}
+
+@layer utilities {
+  .container-page { max-width: 1200px; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .container-page { padding-inline: 2rem; } }
+
+  .fade-in-up { animation: fadeInUp .8s ease both; }
+  .fade-in { animation: fadeIn .8s ease both; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  .card-lift { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .card-lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(11,45,69,.25); border-color: #cfc7b3; }
+
+  .gold-divider { height: 2px; width: 56px; background: linear-gradient(90deg, #7A1024, #b08036); border-radius: 2px; }
+}
