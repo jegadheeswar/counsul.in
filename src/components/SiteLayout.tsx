@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { AppLink, usePathname } from "@/lib/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, Globe2, Mail, MapPin } from "lucide-react";
 import { navLinks, profile } from "@/lib/profile";
@@ -10,7 +10,7 @@ const contactEmail = "sowkathaliabdulkhader@counsul.in";
 function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pathname = usePathname();
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -30,7 +30,7 @@ function Header() {
       )}
     >
       <div className="container-page flex h-16 md:h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group" aria-label="Home">
+        <AppLink to="/" className="flex items-center gap-3 group" aria-label="Home">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--navy)] text-[var(--ivory)] font-serif text-lg">
             S
           </span>
@@ -42,13 +42,13 @@ function Header() {
               Diplomatic Profile
             </span>
           </span>
-        </Link>
+        </AppLink>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
           {navLinks.map((l) => {
             const active = pathname === l.to;
             return (
-              <Link
+              <AppLink
                 key={l.to}
                 to={l.to}
                 className={cn(
@@ -63,15 +63,15 @@ function Header() {
                     active ? "scale-x-100" : "scale-x-0"
                   )}
                 />
-              </Link>
+              </AppLink>
             );
           })}
-          <Link
+          <AppLink
             to="/contact"
             className="ml-3 inline-flex items-center justify-center rounded-full bg-[var(--navy)] px-5 py-2.5 text-sm font-medium text-white hover:bg-[var(--maroon)] transition-colors"
           >
             Get in Touch
-          </Link>
+          </AppLink>
         </nav>
 
         <button
@@ -90,7 +90,7 @@ function Header() {
             {navLinks.map((l) => {
               const active = pathname === l.to;
               return (
-                <Link
+                <AppLink
                   key={l.to}
                   to={l.to}
                   className={cn(
@@ -101,7 +101,7 @@ function Header() {
                   )}
                 >
                   {l.label}
-                </Link>
+                </AppLink>
               );
             })}
           </nav>
@@ -129,12 +129,12 @@ function Footer() {
           <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
             {navLinks.map((l) => (
               <li key={l.to}>
-                <Link
+                <AppLink
                   to={l.to}
                   className="text-[var(--slate)] hover:text-[var(--maroon)] transition-colors"
                 >
                   {l.label}
-                </Link>
+                </AppLink>
               </li>
             ))}
           </ul>
@@ -155,9 +155,9 @@ function Footer() {
             <li className="flex items-start gap-2">
               <Mail className="h-4 w-4 mt-0.5 text-[var(--maroon)]" />
               <div className="space-y-1">
-                <Link to="/contact" className="block hover:text-[var(--maroon)]">
+                <AppLink to="/contact" className="block hover:text-[var(--maroon)]">
                   Send a WhatsApp message
-                </Link>
+                </AppLink>
                 <a href={`mailto:${contactEmail}`} className="block break-all hover:text-[var(--maroon)]">
                   {contactEmail}
                 </a>
@@ -186,7 +186,7 @@ function Footer() {
 }
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pathname = usePathname();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [pathname]);

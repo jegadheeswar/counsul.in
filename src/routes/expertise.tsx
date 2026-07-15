@@ -1,5 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { PageHeader } from "@/components/SiteLayout";
 import { type Expertise, expertise } from "@/lib/profile";
 import {
@@ -15,26 +14,6 @@ import {
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/expertise")({
-  component: ExpertisePage,
-  head: () => ({
-    meta: [
-      { title: "Expertise | H.E. Abdul Khader Sowkath Ali" },
-      {
-        name: "description",
-        content:
-          "Areas of expertise spanning international diplomacy, sustainable development, humanitarian relief, peacebuilding and multilingual communication.",
-      },
-      {
-        name: "keywords",
-        content:
-          "international diplomacy, sustainable development goals, humanitarian relief, peacebuilding, government relations, strategic partnerships, multilingual communication, diplomatic expertise",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/expertise" }],
-  }),
-});
-
 const iconFor: Record<string, React.ComponentType<{ className?: string }>> = {
   "International Diplomacy": Globe2,
   "Sustainable Development": Sprout,
@@ -47,7 +26,7 @@ const iconFor: Record<string, React.ComponentType<{ className?: string }>> = {
 
 const categories = ["All", "Diplomacy", "Development", "Humanitarian", "Communication"] as const;
 
-function ExpertisePage() {
+export default function ExpertisePage() {
   useReveal();
   const [filter, setFilter] = useState<(typeof categories)[number]>("All");
   const [selected, setSelected] = useState<Expertise | null>(null);

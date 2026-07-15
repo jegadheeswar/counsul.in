@@ -1,5 +1,4 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+﻿import { useState } from "react";
 import { X } from "lucide-react";
 import { PageHeader } from "@/components/SiteLayout";
 import deputyFinanceMinister from "@/assets/gallery/meetings/deputy-finance-minister.jpg";
@@ -22,26 +21,6 @@ import culturalDelegationWelcome from "@/assets/gallery/events/cultural-delegati
 import strategicPartnershipPresentation from "@/assets/gallery/events/strategic-partnership-presentation.jpg";
 import strategicPartnershipExchange from "@/assets/gallery/events/strategic-partnership-exchange.jpg";
 import { useReveal } from "@/hooks/use-reveal";
-
-export const Route = createFileRoute("/gallery")({
-  component: GalleryPage,
-  head: () => ({
-    meta: [
-      { title: "Gallery & Media | H.E. Abdul Khader Sowkath Ali" },
-      {
-        name: "description",
-        content:
-          "Visual chronicle of diplomatic meetings, awards, Nation of Hawaii engagements and international events involving H.E. Abdul Khader Sowkath Ali.",
-      },
-      {
-        name: "keywords",
-        content:
-          "Sowkath Ali gallery, diplomatic meetings, awards recognition, House of Lords, Nation of Hawaii, international events, cultural diplomacy, diplomatic photos",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/gallery" }],
-  }),
-});
 
 type GalleryItem = {
   src: string;
@@ -118,7 +97,7 @@ const sections: GallerySection[] = [
   },
 ];
 
-function GalleryPage() {
+export default function GalleryPage() {
   useReveal();
   const [selected, setSelected] = useState<GalleryItem | null>(null);
 

@@ -1,30 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { AppLink } from "@/lib/navigation";
 import { ArrowRight, Globe2, Star } from "lucide-react";
 import portrait from "@/assets/sowkathali-standing.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 import { appointments, profile, stats } from "@/lib/profile";
 import { useReveal } from "@/hooks/use-reveal";
 
-export const Route = createFileRoute("/")({
-  component: HomePage,
-  head: () => ({
-    meta: [
-      { title: "H.E. Abdul Khader Sowkath Ali | Diplomatic Profile" },
-      {
-        name: "description",
-        content:
-          "Official portfolio of H.E. Abdul Khader Sowkath Ali, Special Envoy and Honorary Consul General with two decades of international diplomatic service.",
-      },
-      {
-        name: "keywords",
-        content: "H.E. Abdul Khader Sowkath Ali, Sowkath Ali official website, diplomatic profile, Special Envoy, Honorary Consul General, Roving Ambassador, international diplomat, SDG leadership, humanitarian service, peacebuilding",
-      },
-    ],
-  }),
-});
-
-
-function HomePage() {
+export default function HomePage() {
   useReveal();
   return (
     <>
@@ -49,18 +30,18 @@ function HomePage() {
               {profile.summary}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
+              <AppLink
                 to="/about"
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--navy)] px-6 py-3 text-sm font-medium text-white hover:bg-[var(--maroon)] transition-colors"
               >
                 View Profile <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
+              </AppLink>
+              <AppLink
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-full border border-[var(--navy)] px-6 py-3 text-sm font-medium text-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-colors"
               >
                 Contact Office
-              </Link>
+              </AppLink>
             </div>
           </div>
           <div className="fade-in relative mx-auto w-full max-w-md">
@@ -146,12 +127,12 @@ function HomePage() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Link
+          <AppLink
             to="/appointments"
             className="inline-flex items-center gap-2 text-sm font-medium text-[var(--navy)] hover:text-[var(--maroon)]"
           >
             All appointments <ArrowRight className="h-4 w-4" />
-          </Link>
+          </AppLink>
         </div>
       </section>
 
@@ -163,12 +144,12 @@ function HomePage() {
           <p className="mt-4 text-white/80 max-w-xl mx-auto">
             For diplomatic correspondence, speaking invitations or partnership inquiries, please send the office a WhatsApp message through the contact form.
           </p>
-          <Link
+          <AppLink
             to="/contact"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-[var(--navy)] hover:bg-[var(--ivory)] transition-colors"
           >
             Contact the Office <ArrowRight className="h-4 w-4" />
-          </Link>
+          </AppLink>
         </div>
       </section>
     </>

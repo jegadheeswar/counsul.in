@@ -1,29 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/SiteLayout";
 import { appointments } from "@/lib/profile";
 import { Building2 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
-export const Route = createFileRoute("/appointments")({
-  component: AppointmentsPage,
-  head: () => ({
-    meta: [
-      { title: "Appointments | H.E. Abdul Khader Sowkath Ali" },
-      {
-        name: "description",
-        content:
-          "Distinguished diplomatic appointments held by H.E. Abdul Khader Sowkath Ali across intergovernmental organizations and nations.",
-      },
-      {
-        name: "keywords",
-        content: "Sowkath Ali appointments, Special Envoy UnASDG, Honorary Consul General Nation of Hawaii, Roving Ambassador State of the African Diaspora, United Nations Diplomatic Committee, World Peace Committee Jakarta",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/appointments" }],
-  }),
-});
-
-function AppointmentsPage() {
+export default function AppointmentsPage() {
   useReveal();
   return (
     <>

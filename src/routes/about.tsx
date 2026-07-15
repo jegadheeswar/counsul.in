@@ -1,29 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/SiteLayout";
 import portrait from "@/assets/sowkathali-seated.jpg";
 import { languages, profile } from "@/lib/profile";
 import { useReveal } from "@/hooks/use-reveal";
 
-export const Route = createFileRoute("/about")({
-  component: AboutPage,
-  head: () => ({
-    meta: [
-      { title: "About | H.E. Abdul Khader Sowkath Ali" },
-      {
-        name: "description",
-        content:
-          "Biography of H.E. Abdul Khader Sowkath Ali | diplomat, envoy and humanitarian with over two decades of service across global forums.",
-      },
-      {
-        name: "keywords",
-        content: "Abdul Khader Sowkath Ali biography, H.E. Sowkath Ali about, diplomat biography, humanitarian diplomat, global forums, multilingual diplomat, international service, peace and sustainability",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-});
-
-function AboutPage() {
+export default function AboutPage() {
   useReveal();
   return (
     <>

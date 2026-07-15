@@ -1,29 +1,9 @@
-﻿import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+﻿import { useState } from "react";
 import { PageHeader } from "@/components/SiteLayout";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useReveal } from "@/hooks/use-reveal";
 import { Mail, Globe2, ShieldCheck } from "lucide-react";
-
-export const Route = createFileRoute("/contact")({
-  component: ContactPage,
-  head: () => ({
-    meta: [
-      { title: "Contact | H.E. Abdul Khader Sowkath Ali" },
-      {
-        name: "description",
-        content:
-          "Reach the Office of H.E. Abdul Khader Sowkath Ali for diplomatic correspondence, speaking invitations and partnership inquiries.",
-      },
-      {
-        name: "keywords",
-        content: "contact H.E. Abdul Khader Sowkath Ali, diplomatic correspondence, speaking invitation, partnership inquiry, Special Envoy office, diplomatic office contact",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-});
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your full name").max(100),
@@ -45,7 +25,7 @@ const whatsappNumber = "919944363919";
 const contactEmail = "sowkathaliabdulkhader@counsul.in";
 
 
-function ContactPage() {
+export default function ContactPage() {
   useReveal();
   const [form, setForm] = useState<FormState>({
     name: "",

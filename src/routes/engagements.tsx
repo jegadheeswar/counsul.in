@@ -1,28 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/SiteLayout";
 import { engagements } from "@/lib/profile";
 import { useReveal } from "@/hooks/use-reveal";
 
-export const Route = createFileRoute("/engagements")({
-  component: EngagementsPage,
-  head: () => ({
-    meta: [
-      { title: "Engagements | H.E. Abdul Khader Sowkath Ali" },
-      {
-        name: "description",
-        content:
-          "Career timeline and notable engagements of H.E. Abdul Khader Sowkath Ali across diplomatic, peace and humanitarian arenas.",
-      },
-      {
-        name: "keywords",
-        content: "Sowkath Ali engagements, diplomatic timeline, envoy missions, peace engagements, humanitarian engagements, SDG programs, global diplomacy career, House of Lords recognition",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/engagements" }],
-  }),
-});
-
-function EngagementsPage() {
+export default function EngagementsPage() {
   useReveal();
   return (
     <>
