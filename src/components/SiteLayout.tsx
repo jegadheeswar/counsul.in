@@ -1,11 +1,12 @@
 import { AppLink, usePathname } from "@/lib/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, Globe2, Mail, MapPin } from "lucide-react";
+import { Menu, X, Globe2, Mail, MapPin, MessageCircle } from "lucide-react";
 import { navLinks, profile } from "@/lib/profile";
 import { cn } from "@/lib/utils";
 import cloudmasaLogo from "@/assets/cloudmasa-logo.png";
 
 const contactEmail = "sowkathaliabdulkhader@counsul.in";
+const whatsappUrl = "https://wa.me/919944363919";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -173,15 +174,29 @@ function Footer() {
             href="https://cloudmasa.com"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-3 text-[var(--slate)] transition-colors hover:text-[var(--maroon)]"
+            className="inline-flex items-start gap-3 text-[var(--maroon)] transition-colors hover:text-[var(--navy)]"
             aria-label="Built by CloudMaSa"
           >
-            <span className="font-medium">Built by</span>
+            <span className="mt-8 font-medium sm:mt-9">Built by</span>
             <img src={cloudmasaLogo} alt="CloudMaSa" className="h-14 w-auto object-contain sm:h-16" />
           </a>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FloatingWhatsApp() {
+  return (
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat on WhatsApp"
+      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+    >
+      <MessageCircle className="h-7 w-7" />
+    </a>
   );
 }
 
@@ -196,6 +211,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }
@@ -228,3 +244,4 @@ export function PageHeader({
     </section>
   );
 }
+
