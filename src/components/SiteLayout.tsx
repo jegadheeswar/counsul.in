@@ -27,14 +27,12 @@ function Header() {
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
           ? "bg-white/95 backdrop-blur border-b border-border shadow-[0_2px_20px_-12px_rgba(11,45,69,0.25)]"
-          : "bg-white/80 backdrop-blur-sm"
+          : "bg-white/80 backdrop-blur-sm",
       )}
     >
       <div className="container-page flex h-16 md:h-20 items-center justify-between">
         <AppLink to="/" className="flex items-center gap-3 group" aria-label="Home">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--navy)] text-[var(--ivory)] font-serif text-lg">
-            S
-          </span>
+          <img src="/favicon.svg" alt="Sowkath Ali" className="h-10 w-10 rounded-lg object-cover" />
           <span className="flex flex-col leading-tight">
             <span className="font-serif text-base md:text-lg text-[var(--navy)] tracking-tight">
               {profile.shortName}
@@ -54,14 +52,14 @@ function Header() {
                 to={l.to}
                 className={cn(
                   "relative px-3 py-2 text-sm font-medium transition-colors",
-                  active ? "text-[var(--maroon)]" : "text-[var(--navy)] hover:text-[var(--maroon)]"
+                  active ? "text-[var(--maroon)]" : "text-[var(--navy)] hover:text-[var(--maroon)]",
                 )}
               >
                 {l.label}
                 <span
                   className={cn(
                     "absolute left-3 right-3 -bottom-0.5 h-[2px] bg-[var(--maroon)] origin-left transition-transform",
-                    active ? "scale-x-100" : "scale-x-0"
+                    active ? "scale-x-100" : "scale-x-0",
                   )}
                 />
               </AppLink>
@@ -98,7 +96,7 @@ function Header() {
                     "rounded-md px-3 py-3 text-base font-medium",
                     active
                       ? "bg-[var(--ivory)] text-[var(--maroon)]"
-                      : "text-[var(--navy)] hover:bg-[var(--ivory)]"
+                      : "text-[var(--navy)] hover:bg-[var(--ivory)]",
                   )}
                 >
                   {l.label}
@@ -117,11 +115,16 @@ function Footer() {
     <footer className="mt-24 border-t border-border bg-[var(--ivory)]">
       <div className="container-page grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <h3 className="font-serif text-xl text-[var(--navy)]">{profile.name}</h3>
+          <div className="flex items-center gap-3">
+            <img
+              src="/favicon.svg"
+              alt="Sowkath Ali"
+              className="h-12 w-12 rounded-lg object-cover"
+            />
+            <h3 className="font-serif text-xl text-[var(--navy)]">{profile.name}</h3>
+          </div>
           <div className="gold-divider mt-3" />
-          <p className="mt-4 text-sm text-[var(--slate)] max-w-sm">
-            {profile.tagline}
-          </p>
+          <p className="mt-4 text-sm text-[var(--slate)] max-w-sm">{profile.tagline}</p>
         </div>
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-[0.15em] text-[var(--navy)]">
@@ -159,7 +162,10 @@ function Footer() {
                 <AppLink to="/contact" className="block hover:text-[var(--maroon)]">
                   Send a WhatsApp message
                 </AppLink>
-                <a href={`mailto:${contactEmail}`} className="block break-all hover:text-[var(--maroon)]">
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="block break-all hover:text-[var(--maroon)]"
+                >
                   {contactEmail}
                 </a>
               </div>
@@ -169,7 +175,10 @@ function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="container-page flex flex-col md:flex-row items-center justify-between gap-4 py-5 text-sm text-[var(--slate)]">
-          <p>&copy; {new Date().getFullYear()} Office of H.E. Abdul Khader Sowkath Ali. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Office of H.E. Abdul Khader Sowkath Ali. All rights
+            reserved.
+          </p>
           <a
             href="https://cloudmasa.com"
             target="_blank"
@@ -178,7 +187,11 @@ function Footer() {
             aria-label="Built by CloudMaSa"
           >
             <span className="mt-8 font-medium sm:mt-9">Built by</span>
-            <img src={cloudmasaLogo} alt="CloudMaSa" className="h-14 w-auto object-contain sm:h-16" />
+            <img
+              src={cloudmasaLogo}
+              alt="CloudMaSa"
+              className="h-14 w-auto object-contain sm:h-16"
+            />
           </a>
         </div>
       </div>
@@ -231,9 +244,7 @@ export function PageHeader({
         <p className="text-xs uppercase tracking-[0.25em] text-[var(--maroon)] font-semibold">
           {eyebrow}
         </p>
-        <h1 className="mt-3 font-serif text-4xl md:text-5xl text-[var(--navy)]">
-          {title}
-        </h1>
+        <h1 className="mt-3 font-serif text-4xl md:text-5xl text-[var(--navy)]">{title}</h1>
         <div className="gold-divider mt-5" />
         {description && (
           <p className="mt-5 max-w-2xl text-base md:text-lg text-[var(--slate)] leading-relaxed">
@@ -244,4 +255,3 @@ export function PageHeader({
     </section>
   );
 }
-
